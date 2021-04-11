@@ -27,20 +27,28 @@ def plot_regressor_line(x, y, b):
     plt.xlabel('x')
     plt.ylabel('y')
     plt.show()
-    
+
+# Prediction Function which takes Value and predict by using our calculated coefficients    
 def pred_value(val, b):
     ypred = b[0] + b[1]*val
     return ypred
 
 if __name__ == "__main__":
+    # Series of data point. This could be taken from csv file by reading and making a dataframe
     X = np.array([0,1,2,3,4,5,6,7,8,9])
     y = np.array([0,2,4,6,8,10,12,14,16,18])
+    
+    # Calculating the coefficients
     b = estimate_coefficent(X,y)
+    
+    # checking the coefficient values
     print('Co-efficient B0: ',b[0])
     print('Co-efficient B1: ',b[1])
     
+    # Visualizing Regression Line with the data points 
     plot_regressor_line(X, y, b)
     
+    # Predicting another data point entered by user
     value = int(input('Enter index to predict:'))
     pred_val = pred_value(value, b)
     print(pred_val)
